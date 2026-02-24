@@ -99,7 +99,7 @@ pipeline {
             }
 
             environment {
-                CI_ENVIRONMENT_URL = https://incomparable-crepe-0bfdc0.netlify.app
+                CI_ENVIRONMENT_URL = 'https://incomparable-crepe-0bfdc0.netlify.app'
             }
             steps {
                 sh '''

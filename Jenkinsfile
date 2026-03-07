@@ -12,7 +12,7 @@ pipeline {
                 docker {
                 image 'node:18-alpine'
                 reuseNode true
-                 args '-e DOCKER_HOST=unix:///var/run/docker.sock -v /var/run/docker.sock:/var/run/docker.sock'
+                
                 }
             }
             steps {

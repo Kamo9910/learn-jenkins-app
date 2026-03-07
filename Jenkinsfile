@@ -32,8 +32,7 @@ pipeline {
                     agent {
                         docker {
                             image 'node:18-alpine'
-                            registryUrl 'https://index.docker.io/v1/'
-                            registryCredentialsId 'docker-hub-credentials'
+                            reuseNode true
                         }
                     }
                     steps {

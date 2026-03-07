@@ -87,6 +87,9 @@ pipeline {
                 node_modules/.bin/netlify deploy --dir=build --json > deploy-output.json
                 node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json
                 '''
+                script{
+                    env.MY_VAR = sh(script: 'date', returnStdout: true)
+                }
             }
         }
 
@@ -128,8 +131,10 @@ pipeline {
                 CI_ENVIRONMENT_URL = 'https://incomparable-crepe-0bfdc0.netlify.app'
             }
             steps {
+
                 sh '''
                 npx playwright test --reporter=html
+                echo "MY_VAR is: ${env.MY_VAR}"
                 '''
             }
             post {

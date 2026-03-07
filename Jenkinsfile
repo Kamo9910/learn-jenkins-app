@@ -103,10 +103,9 @@ pipeline {
                 CI_ENVIRONMENT_URL = "${env.MY_VAR}"
             }
             steps {
-
+                echo "MY_VAR is: ${env.MY_VAR}"
                 sh '''
                 npx playwright test --reporter=html
-                echo "MY_VAR is: ${env.MY_VAR}"
                 '''
             }
             post {

@@ -12,7 +12,7 @@ pipeline {
                 docker {
                 image 'node:18-alpine'
                 reuseNode true
-                
+
                 }
             }
             steps {
@@ -81,7 +81,7 @@ pipeline {
             }
 
             environment {
-                CI_ENVIRONMENT_URL = "STAGING_URL_TO_BE_SET"
+                CI_ENVIRONMENT_URL="STAGING_URL_TO_BE_SET"
             }
             steps {
                 sh '''
@@ -90,7 +90,7 @@ pipeline {
                 echo "Deploying to staging. Sit ID:  $NETLIFY_SITE_ID "
                 node_modules/.bin/netlify status
                 node_modules/.bin/netlify deploy --dir=build --json > deploy-output.json
-                CI_ENVIRONMENT_URL = $(node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json)
+                CI_ENVIRONMENT_URL=$(node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json)
                 npx playwright test --reporter=html
                 '''
             }
